@@ -28,14 +28,18 @@ jobs:
           docker push akkc01/akkc:${{ github.sha }}
 
 
-      # - name: Update Manifest Repo
-      #   run: |
-      #     git clone https://github.com/akkc01/GitOps-Argocd-manifest-portfolio.git
-      #     cd GitOps-Argocd-manifest-portfolio/manifest-files
+      - name: Update Manifest Repo
+        run: |
+          git clone https://x-access-token:${{ secrets.MY_GITHUB_PAT }}@github.com/akkc01/GitOps-Argocd-manifest-portfolio.git
           
-      #     sed -i "s|image: .*|image: akkc01/akkc:${{ github.sha }}|" deployment.yaml
+          cd GitOps-Argocd-manifest-portfolio/manifest-files
           
-      #     git config user.name akkc01
-      #     git config user.email amitkkc01@gmail.com
-      #     git commit -am "Update image tag"
-      #     git push
+          sed -i "s|image: .*|image: akkc01/akkc:${{ github.sha }}|" deployment.yaml
+          
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          
+          git add .
+          git commit -m "Update image tag"
+          
+          git push
