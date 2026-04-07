@@ -5,7 +5,7 @@ metadata:
   labels:
     app: akkc-portfolio-deployment
 spec:
-  replicas: 2
+  replicas: 10
   selector:
     matchLabels:
       app: akkc-portfolio
