@@ -29,8 +29,8 @@ jobs:
 
       - name: Update Manifest Repo
         run: |
-          git clone https://github.com/akkc01/manifest-repo.git
-          cd manifest-repo
+          git clone https://github.com/akkc01/GitOps-Argocd-manifest-portfolio.git
+          cd GitOps-Argocd-manifest-portfolio/manifest-files
           
           sed -i "s|image: .*|image: akkc01/akkc:${{ github.sha }}|" deployment.yaml
           
