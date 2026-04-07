@@ -35,7 +35,7 @@ jobs:
           
           sed -i "s|image: .*|image: akkc01/akkc:${{ github.sha }}|" deployment.yaml
           
-          git config user.name "akkc01"
-          git config user.email "amitkkc01@gmail.com"
+          git config user.name akkc01
+          git config user.email amitkkc01@gmail.com
           git commit -am "Update image tag"
           git push
