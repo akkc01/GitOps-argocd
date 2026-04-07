@@ -21,18 +21,18 @@ jobs:
 
       - name: Build Image
         run: |
-          docker build -t yourdockerhub/akkc:${{ github.sha }} .
+          docker build -t akkc01/akkc:${{ github.sha }} .
 
       - name: Push Image
         run: |
-          docker push yourdockerhub/akkc:${{ github.sha }}
+          docker push akkc01/akkc:${{ github.sha }}
 
       - name: Update Manifest Repo
         run: |
-          git clone https://github.com/your-username/manifest-repo.git
+          git clone https://github.com/akkc01/manifest-repo.git
           cd manifest-repo
           
-          sed -i "s|image: .*|image: yourdockerhub/akkc:${{ github.sha }}|" deployment.yaml
+          sed -i "s|image: .*|image: akkc01/akkc:${{ github.sha }}|" deployment.yaml
           
           git config user.name "github-actions"
           git config user.email "actions@github.com"
